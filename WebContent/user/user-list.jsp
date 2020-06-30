@@ -14,10 +14,11 @@ Connection con = Connector.getConnection();
 Statement stmt = con.createStatement();
 String sql = "SELECT * FROM user";
 ResultSet rs = stmt.executeQuery(sql);
-%>
-<a href="naver.com"><button>회원정보입력</button></a>
+%> 
+<a href="/web/user/user-insert.jsp"><button>회원정보입력</button></a>
 <table border="1">
 <tr>
+<th><input type="checkbox" name="all" value="<%= ""%>"></th>
 <th>번호</th>
 <th>이름</th>
 <th>아이디</th>
@@ -26,6 +27,7 @@ ResultSet rs = stmt.executeQuery(sql);
 while(rs.next()){
 %>
 <tr> 
+<td><input type="checkbox" name="ch" value="<%=rs.getInt("num")%>"></td>
 <td><%=rs.getInt("num")%></td>
 <td><%=rs.getString("NAME")%></td>
 <td><%=rs.getString("id") %></td>
