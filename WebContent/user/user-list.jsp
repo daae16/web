@@ -16,9 +16,11 @@ String sql = "SELECT * FROM user";
 ResultSet rs = stmt.executeQuery(sql);
 %> 
 <a href="/web/user/user-insert.jsp"><button>회원정보입력</button></a>
+<form action="/web/user/user-delete-ok.jsp:">
+<button>삭제</button>
 <table border="1">
 <tr>
-<th><input type="checkbox" name="all" value="<%= ""%>"></th>
+<th><input type="checkbox" id="all" onclick="checkAll()"></th>
 <th>번호</th>
 <th>이름</th>
 <th>아이디</th>
@@ -36,5 +38,15 @@ while(rs.next()){
 }
 %>
 </table>
+</form>
+<script>
+  function checkAll(){
+	  var obj = document.getElementById("all");
+	  var objs = document.getElementsByName("ch");
+	  for(var i=0; i<objs.length;i++){
+		  objs[i].checked = obj.checked;
+	  }
+  }
+</script>
 </body>
 </html>
